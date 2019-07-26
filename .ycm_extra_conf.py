@@ -1,14 +1,26 @@
 import os
 import ycm_core
+ArduinoDir = os.environ.get("ARDUINO", "/usr/share/arduino")
+ArduinoCIDir = os.path.join(
+    os.environ.get(
+        "ARDUINO_CI",
+        "/usr/share/gems/gems/arduino_ci-0.2.0/"),
+    "cpp", "unittest")
+
+def DirectoryOfThisScript():
+  return os.path.dirname( os.path.abspath( __file__ ) )
+
+curdir = DirectoryOfThisScript()
 
 # You can set a directory with a lot of libraries to be search recursively here
 ArduinoLibDir = [
-  # "/Applications/Arduino.app/Contents/Java/libraries"
-  "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/libraries"
+  os.path.join(ArduinoDir, "hardware/arduino/avr/libraries"),
+  os.path.expanduser("~/Arduino/libraries")
 ]
 
 # This is the list of all directories to search for header files
-libDirs = ArduinoLibDir + ["lib"]
+libDirs = ArduinoLibDir + [os.path.join(curdir, "lib")]
+#libDirs = ArduinoLibDir
 
 flags = [
   # General flags
@@ -23,12 +35,15 @@ flags = [
 
   # Avr-libc flags installed with homebrew
   # ,"-isystem/usr/local/Cellar/avr-gcc/7.2.0/avr/include"
-  ,"-isystem/usr/local/Cellar/avr-gcc/8.3.0/avr/include"
+  # ,"-isystem/usr/avr/include"
+  ,'-isystem{}'.format(os.path.join(ArduinoDir,
+                                    'hardware/tools/avr/avr/include'))
 
-  # IDE 1.6.3
-  ,'-I/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/cores/arduino'
-  ,'-I/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/variants/mega'
-
+   ,'-I{}'.format(os.path.join(ArduinoDir,
+                               'hardware/arduino/avr/cores/arduino'))
+   ,'-I{}'.format(os.path.join(ArduinoDir,
+                               'hardware/arduino/avr/variants/mega'))
+   ,'-I{}'.format(ArduinoCIDir)
     # Customize microcontroler and Arduino version
   ,'-mmcu=atmega2560'
   ,'-DF_CPU=16000000L'
@@ -49,9 +64,6 @@ else:
   database = None
 
 SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', '.ino', '.m', '.mm' ]
-
-def DirectoryOfThisScript():
-  return os.path.dirname( os.path.abspath( __file__ ) )
 
 def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):
   if not working_directory:
