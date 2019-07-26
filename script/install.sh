@@ -35,4 +35,9 @@ sudo mv "$ARDUINO_BASENAME/" "$ARDUINO"
 sudo ln -s "$ARDUINO/$ARDUINO_BASENAME/hardware" "$ARDUINO/hardware"
 sudo ln -s "$ARDUINO/$ARDUINO_BASENAME/lib" "$ARDUINO/lib"
 
+
+echo "Installing arduino_ci"
+cd $CWD
+bundler install --path vendor/bundle
+
 echo "Installation of dependencies is complete..."

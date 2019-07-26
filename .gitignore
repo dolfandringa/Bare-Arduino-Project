@@ -1,9 +1,15 @@
 .DS_Store
+build
+.bundle
+vendor
+Gemfile.lock
 bin/*/
 *build-*
 *~
+/arduino*.tar.xz
 build-tmp/
-Makefile
+src/*/Makefile
+lib/*/Makefile
 doc/
 debug.txt
 .ycm_extra_conf.pyc
