@@ -36,4 +36,4 @@ done
 
 echo "Running tests"
 cd "$CWD" 
-bundle exec arduino_ci_remote.rb --skip-compilation
+PATH="$ARDUINO/$ARDUINO_BASENAME:$PATH" bundle exec arduino_ci_remote.rb --skip-compilation
