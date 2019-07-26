@@ -5,7 +5,7 @@
 
 ### PROJECT_DIR
 ### This is the path to where you have created/cloned your project
-PROJECT_DIR       = $(shell dirname $(shell pwd))
+PROJECT_DIR       = $(shell dirname $(shell dirname $(shell pwd)))
 
 ### ARDMK_DIR
 ### Path to the Arduino-Makefile directory.
