@@ -4,7 +4,6 @@ source "$DIR/bootstrap.sh"
 
 echo "Installing dependencies needed to build the sources and tests..."
 
-ARDUINO_BASENAME="arduino-1.8.9"
 ARDUINO_FILE="$ARDUINO_BASENAME-linux64.tar.xz"
 ARDUINO_URL="https://downloads.arduino.cc/$ARDUINO_FILE"
 
