@@ -2,7 +2,7 @@ ECHO    = printf
 
 SUBDIRS := $(wildcard src/*)
 UNAME_S := $(shell uname -s)
-TOPTARGETS := upload build
+TOPTARGETS := upload
 
 ifeq ($(UNAME_S),Linux)
     MKFILE = Makefile-Linux.mk
@@ -12,8 +12,14 @@ ifeq ($(UNAME_S),Darwin)
 endif
 
 $(TOPTARGETS): $(SUBDIRS)
-$(SUBDIRS):
-	$(shell cp ${MKFILE} $@/Makefile)\
+
+#copy makefile over
+$(SUBDIRS:=/Makefile) : ${MKFILE}
+	cp $< $@
+
+#run both upload and regular builds
+$(SUBDIRS): % : %/Makefile
+	$(MAKE) -C $@
 	$(MAKE) -C $@ $(MAKECMDGOALS)
 
 .PHONY: $(TOPTARGETS) $(SUBDIRS)
