@@ -1,0 +1,10 @@
+unittest:
+  exclude_dirs:
+    - arduino-1.8.9
+    - Arduino-Makefile
+  platforms:
+    - uno
+
+compile:
+  platforms:
+    - uno

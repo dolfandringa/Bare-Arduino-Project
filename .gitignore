@@ -6,7 +6,7 @@ Gemfile.lock
 bin/*/
 *build-*
 *~
-/arduino*.tar.xz
+/arduino*
 build-tmp/
 src/*/Makefile
 lib/*/Makefile

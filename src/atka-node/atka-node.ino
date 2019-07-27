@@ -1,4 +1,6 @@
 #include <Arduino.h>
+#include <testlib.h>
+#include <SPI.h>
 
 void setup() {
     pinMode(5, OUTPUT);

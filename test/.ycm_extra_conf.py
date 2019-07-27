@@ -1,11 +1,11 @@
 import os
 import ycm_core
-ArduinoDir = os.environ.get("ARDUINO_DIR", "/opt/arduino")
+ArduinoDir = os.environ.get("ARDUINO", "/usr/share/arduino")
 AVRLibCDir = os.path.join(ArduinoDir, 'hardware', 'tools', 'avr', 'avr',
                           'include')
 ArduinoCIDir = os.path.join(
     os.environ.get(
-        "ARDUINO_CI_DIR",
+        "ARDUINO_CI",
         "/usr/share/gems/gems/arduino_ci-0.2.0/"),
     "cpp")
 

@@ -1,6 +1,7 @@
 #ifndef TESTLIB_H
 #define TESTLIB_H
 #include <Arduino.h>
+#include <SPI.h>
 
 class TestLib
 {

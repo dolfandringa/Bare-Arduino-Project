@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include "testlib.h"
+#include <SPI.h>
 
 TestLib::TestLib (int dataReadyPin, int chipSelectPin) {
     DRPin = dataReadyPin;
