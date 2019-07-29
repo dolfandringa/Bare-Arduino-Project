@@ -14,7 +14,7 @@ echo "Unzipping $ARDUINO_BASENAME"
 tar xf "$ARDUINO_FILE"
 
 #echo "Installing avr-gcc to $AVR_GCC"
-#sudo mv "$ARDUINO_BASENAME/hardware/tools/avr" "$AVR_GCC"
+sudo mv "$ARDUINO_BASENAME/hardware/tools/avr" "$AVR_GCC"
 
 echo "Install Arduino to $ARDUINO"
 sudo rm -rf "$ARDUINO/$ARDUINO_BASENAME"
